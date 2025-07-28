@@ -1,0 +1,12 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'menu_app/styles' %}">
+<div style="display: flex;">
+{% for node in menu_tree %}
+    <div class="menu_block">
+    <a href="/{{ node.item.url }}" class="menu-link-1">{{ node.item.title }}</a>
+    {% if node.children %}
+        {% include "menu_app/menu_level_1.html" with menu_tree=node.children %}
+    {% endif %}
+    </div>
+{% endfor %}
+</div>

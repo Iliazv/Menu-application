@@ -1,0 +1,10 @@
+{% if not node.expanded %}<div class="menu_level_2 hidden">{% else %}<div class="menu_level_2 displayed_block">{% endif %}
+{% for node in menu_tree %}
+    <div class="menu_block">
+    <a href="/{{ node.item.url }}" class="menu-link-2">{{ node.item.title }}</a>
+    {% if node.children %}
+        {% include "menu_app/menu_level_2.html" with menu_tree=node.children %}
+    {% endif %}
+    </div>
+{% endfor %}
+</div>
